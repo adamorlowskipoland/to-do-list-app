@@ -38,7 +38,6 @@ var todoList = {
     
     
     toggleCompleted: function(position) {
-      debugger;
         var todo = this.todos[position];
         todo.completed = !todo.completed;
         this.displayTodos();
@@ -71,14 +70,11 @@ var todoList = {
     }
 };
 
-var displayTodosBtn = document.getElementById("displayTodosBtn");
-var toggleAllBtn = document.getElementById("toggleAllBtn");
-
-displayTodosBtn.addEventListener('click', function() {
-    todoList.displayTodos();
-})
-
-toggleAllBtn.addEventListener('click', function() {
-    todoList.toggleAll();
-})
-
+var handlers = {
+    displayTodos: function () {
+        todoList.displayTodos();
+    },
+    toggleAll: function () {
+        todoList.toggleAll();
+    }
+}
