@@ -28,3 +28,11 @@ function deleteTodo (position) {
     todos.splice(position, 1);
     displayTodos();
 }
+
+// building objects
+
+var myComputer = {
+    operatingSystem: 'mac',
+    screenSize: '13 in',
+    purchaseYear: 2012
+};
