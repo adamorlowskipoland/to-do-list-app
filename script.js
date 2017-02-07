@@ -83,3 +83,9 @@ var handlers = {
         addTodoTextInput.value = "";
     }
 }
+
+function check(){
+ if (event.keyCode == 13){
+     handlers.addTodo();
+ }
+}
