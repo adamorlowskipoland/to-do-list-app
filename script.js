@@ -107,11 +107,25 @@ var view = {
         todosUl.innerHTML = "";
         for (var i = 0; i < todoList.todos.length; i++) {
             var todoLi = document.createElement("li");
+            var todo = todoList.todos[i];
+            var todoTextWithComplition = "";
+            
+            if (todo.completed === true) {
+                todoTextWithComplition = "(x) " + todo.todoText;
+            } else {
+                todoTextWithComplition = "( ) " + todo.todoText;
+            }
+            
+            todoLi.textContent = todoTextWithComplition;
             todosUl.appendChild(todoLi);
         }
     }
 };
 
+
+
+
+// keydown enter functions
 function addEnter(){
  if (event.keyCode == 13){
      handlers.addTodo();
