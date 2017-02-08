@@ -3,6 +3,26 @@
     font-family: Lato, sans-serif;
 }
 
-h1 {
-    font-weight: 300;
+body {
+    background: #ffeee5;
+    font-size: 16px;
 }
+
+.wrapper {
+    width: 80%;
+    margin: 0 auto;
+    background: #ffd3be;
+    padding: 2rem 5rem;
+    color: #6b351c;
+    
+}
+
+.h1 {
+    font-weight: 100;
+    text-align: center;
+    padding: 1rem 0;
+    letter-spacing: .5rem;
+    word-spacing: 2rem;
+    border-bottom: 1px solid #8e563b;
+}
+

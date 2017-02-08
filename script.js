@@ -3,22 +3,22 @@ var todoList = {
     todos: [],
     
     // pushes in array task
-    addTodo: function(todoText) {
-    this.todos.push({
-        todoText: todoText,
-        completed: false
-    });
+    addTodo: function (todoText) {
+        this.todos.push({
+            todoText: todoText,
+            completed: false
+        });
     },
 
     // changes elements in array takse parameter - which elem (position) change for what (todoText)
     changeTodo: function (position, todoText) {
-    this.todos[position].todoText = todoText;
+        this.todos[position].todoText = todoText;
     },
     
     
     // deletes tasks from array
     deleteTodo: function (position) {
-    this.todos.splice(position, 1);
+        this.todos.splice(position, 1);
     },
     
     
@@ -104,9 +104,8 @@ var view = {
     displayTodos: function () {
         var todosUl = document.querySelector("#List");
         todosUl.innerHTML = "";
-        for (var i = 0; i < todoList.todos.length; i++) {
+        todoList.todos.forEach(function (todo, position) {
             var todoLi = document.createElement("li");
-            var todo = todoList.todos[i];
             var todoTextWithComplition = "";
             
             if (todo.completed === true) {
@@ -115,11 +114,11 @@ var view = {
                 todoTextWithComplition = "( ) " + todo.todoText;
             }
             
-            todoLi.id = i;      // gives created li id
+            todoLi.id = position;      // gives created li id
             todoLi.textContent = todoTextWithComplition;
             todoLi.appendChild(this.createDeleteBtn());     // creates new btn from CreateDeleteBtn method and append it to li
             todosUl.appendChild(todoLi);    // append li to ul
-        }
+        }, this);
     },
     createDeleteBtn: function () {
         var deleteBtn = document.createElement("button");
@@ -129,12 +128,12 @@ var view = {
     },
     setUpEventListeners: function () {
         var todosUl = document.querySelector("#List");
-        todosUl.addEventListener('click', function() {
+        todosUl.addEventListener('click', function () {
             var clickedElement = event.target;
             if (clickedElement.className === "deleteBtn") {
                 handlers.deleteTodo(parseInt(clickedElement.parentNode.id));
             }
-        })
+        });
     }
 };
 view.setUpEventListeners();
