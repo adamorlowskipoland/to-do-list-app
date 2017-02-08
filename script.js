@@ -11,26 +11,26 @@ var todoList = {
     },
 
     // changes elements in array takse parameter - which elem (position) change for what (todoText)
-    changeTodo: function(position, todoText) {
+    changeTodo: function (position, todoText) {
     this.todos[position].todoText = todoText;
     },
     
     
     // deletes tasks from array
-    deleteTodo: function(position) {
+    deleteTodo: function (position) {
     this.todos.splice(position, 1);
     },
     
     
     // changes elemets completed prototype
-    toggleCompleted: function(position) {
+    toggleCompleted: function (position) {
         var todo = this.todos[position];
         todo.completed = !todo.completed;
     },
     
     
     // changes all elements completed prototypies
-    toggleAll: function() {
+    toggleAll: function () {
         var totalTodos = this.todos.length;
         var completedTodos = 0;
         
@@ -105,7 +105,7 @@ var handlers = {
 // object with method displaying info from array to ul>li
 // takes value from inputs in html
 var view = {
-    displayTodos: function() {
+    displayTodos: function () {
         var todosUl = document.querySelector("#List");
         todosUl.innerHTML = "";
         for (var i = 0; i < todoList.todos.length; i++) {
@@ -119,9 +119,17 @@ var view = {
                 todoTextWithComplition = "( ) " + todo.todoText;
             }
             
+            todoLi.id = i;      // gives created li id
             todoLi.textContent = todoTextWithComplition;
-            todosUl.appendChild(todoLi);
+            todoLi.appendChild(this.createDeleteBtn());     // creates new btn from CreateDeleteBtn method and append it to li
+            todosUl.appendChild(todoLi);    // append li to ul
         }
+    },
+    createDeleteBtn: function () {
+        var deleteBtn = document.createElement("button");
+        deleteBtn.textContent = "DELETE";
+        deleteBtn.className = "deleteBtn";
+        return deleteBtn;
     }
 };
 
