@@ -99,9 +99,20 @@ var handlers = {
     toggleAll: function () {
         todoList.toggleAll();
     }
-}
+};
 
-function check(){
+var view = {
+    displayTodos: function() {
+        var todosUl = document.querySelector("#List");
+        todosUl.innerHTML = "";
+        for (var i = 0; i < todoList.todos.length; i++) {
+            var todoLi = document.createElement("li");
+            todosUl.appendChild(todoLi);
+        }
+    }
+};
+
+function addEnter(){
  if (event.keyCode == 13){
      handlers.addTodo();
  }

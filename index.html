@@ -14,7 +14,7 @@
     
        
     <div>
-        <input type="text" id="addTodoTextInput" onKeyPress="check()">
+        <input type="text" id="addTodoTextInput" onKeyPress="addEnter()">
         <button onclick="handlers.addTodo()">Add</button>
     </div>  
     
@@ -34,7 +34,11 @@
         <input id="toggleCompletedPositionInput" type="number">
         <button onclick="handlers.toggleCompleted()">Mark as Done!</button>
     </div> 
+    
+    <ul id="List">
         
+    </ul>
+    
     <script src="script.js"></script>
 </body>
 </html>
