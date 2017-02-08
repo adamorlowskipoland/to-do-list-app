@@ -6,32 +6,32 @@
     <link rel="stylesheet" href="style.css" type="text/css">
 </head>
 <body>
-    <h1>Todo List</h1>
+    <h1>TODO LIST</h1>
     <div>
-        <button onclick="handlers.toggleAll()">Toggle All</button>
+        <button onclick="handlers.toggleAll()">TOGGLE ALL</button>
     </div>
     
        
     <div>
-        <input type="text" id="addTodoTextInput" onKeyPress="addEnter()">
-        <button onclick="handlers.addTodo()">Add</button>
+        <input type="text" id="addTodoTextInput" onKeyPress="handlers.addEnter()">
+        <button onclick="handlers.addTodo()">ADD</button>
     </div>  
     
     <div>
         <input id="changeTodoPositionInput" type="number">
         <input id="changeTodoTextInput" type="text">
-        <button onclick="handlers.changeTodo()">Change</button>
+        <button onclick="handlers.changeTodo()">CHANGE</button>
     </div>
        
     <div>
         <input id="deleteTodoPositionInput" type="number">
-        <button onclick="handlers.deleteTodo()">Delete</button>
+        <button onclick="handlers.deleteTodo()">DELETE</button>
     </div>
        
        
     <div>
         <input id="toggleCompletedPositionInput" type="number">
-        <button onclick="handlers.toggleCompleted()">Mark as Done!</button>
+        <button onclick="handlers.toggleCompleted()">MARK AS DONE!</button>
     </div> 
     
     <ul id="List">
