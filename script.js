@@ -1,6 +1,8 @@
 var todoList = {
+    // array with tasks (todos)
     todos: [],
-
+    
+    // pushes in array task
     addTodo: function(todoText) {
     this.todos.push({
         todoText: todoText,
@@ -8,23 +10,26 @@ var todoList = {
     });
     },
 
-    
+    // changes elements in array takse parameter - which elem (position) change for what (todoText)
     changeTodo: function(position, todoText) {
     this.todos[position].todoText = todoText;
     },
     
     
+    // deletes tasks from array
     deleteTodo: function(position) {
     this.todos.splice(position, 1);
     },
     
     
+    // changes elemets completed prototype
     toggleCompleted: function(position) {
         var todo = this.todos[position];
         todo.completed = !todo.completed;
     },
     
     
+    // changes all elements completed prototypies
     toggleAll: function() {
         var totalTodos = this.todos.length;
         var completedTodos = 0;
@@ -50,9 +55,11 @@ var todoList = {
     }
 };
 
+
+// place where all the functions on array are coused
+// runs on events in html file
 var handlers = {
     displayTodos: function () {
-        todoList.displayTodos();
         view.displayTodos();
     },
     addTodo: function () {
@@ -84,9 +91,19 @@ var handlers = {
     toggleAll: function () {
         todoList.toggleAll();
         view.displayTodos();
-    }
+    },
+    
+    // handlers for enter keydown FUTURE: add also for change, delete and toggleCompleted
+    addEnter: function () {
+        if (event.keyCode === 13) {
+            this.addTodo();
+        }
+    },
 };
 
+
+// object with method displaying info from array to ul>li
+// takes value from inputs in html
 var view = {
     displayTodos: function() {
         var todosUl = document.querySelector("#List");
@@ -111,9 +128,5 @@ var view = {
 
 
 
-// keydown enter functions
-function addEnter(){
- if (event.keyCode == 13){
-     handlers.addTodo();
- }
-}
+
+
