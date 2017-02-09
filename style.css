@@ -42,7 +42,7 @@ body {
 .content {
     width: 100%;
     margin: 0 auto;
-    padding: .5rem 5rem;
+    padding: .5rem 0;
 /*    border: 1px solid #6b351c;*/
 }
 
@@ -155,44 +155,26 @@ input:focus {
     font-size: 1.5rem;
     text-transform: uppercase;
     letter-spacing: .5rem;
-    padding: 2rem 0;
-    border-bottom: 1px solid #6b351c;
+    padding: 1rem 0;
     cursor: pointer;
+    border-bottom: 1px solid #6b351c;
 }
 
 
 @media(min-width: 992px) and (max-width: 1199px) {
-    .content {
-        padding: 2rem 0;
-    }
+
 }
 
 @media(max-width: 991px) {
     .wrapper {
-        width: 100%;
-    }
-    .content {
-        padding: 2rem 0;
+        padding: .5rem 1rem;
     }
 }
 
 @media(max-width: 767px) {
-    body {
-        font-size: 70%;
-    }
     .wrapper {
-        width: 100%;
-        padding: 2rem 1rem;
-    }
-    .content {
-        padding: 2rem 0;
-    }
-    .addInput {
-        font-size: 1.2rem;
-    }
-    .ul li p {
-    width: 80%;
-    font-size: 70%;
+        padding: .5rem 0;
+        border: 1px solid #6b351c;
     }
 }
 
