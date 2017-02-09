@@ -23,7 +23,7 @@ body {
     text-align: center;
     padding: 1rem 0;
     letter-spacing: .5rem;
-    word-spacing: 2rem;
+    word-spacing: 1rem;
     border-bottom: 1px solid #8e563b;
 }
 
@@ -31,12 +31,13 @@ body {
     width: 100%;
     margin: 0 auto;
     padding: 4rem 15rem;
+    letter-spacing: .5rem;
 /*    border: 1px solid #6b351c;*/
 }
 
 input {
     border: none;
-    transition: all .7 ease;
+    transition: all .7s ease;
 }
 
 input:focus {
@@ -72,19 +73,20 @@ input:focus {
     font-weight: 200;
     text-transform: uppercase;
     letter-spacing: .1rem;
-    padding: 1rem 1rem;
-    margin-top: 1rem;
+    padding: 1rem;
+    margin-top: .5rem;
     background: #ffeee5;
+    transition: all .7s ease;
 }
 
-.ul li:hover .close {
+.ul li:hover .close, .doneBtn {
     visibility: visible;
 }
 
 .close {
     visibility: hidden;
     float: right;
-    opacity: .2;
+    opacity: .4;
     color: #fc4349;
     font-size: 1.5rem;
 }
@@ -94,7 +96,20 @@ input:focus {
     cursor: pointer;
 }
 
+.doneBtn {
+/*    visibility: hidden;*/
+    float: left;
+    opacity: .4;
+    color: #127F5F;
+    font-size: 1.5rem;
+    padding-right: 1rem;
+    
+}
 
+.doneBtn:hover {
+    opacity: 1;
+    cursor: pointer;
+}
 
 
 
