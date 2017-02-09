@@ -88,13 +88,6 @@ var handlers = {
         todoList.toggleAll();
         view.displayTodos();
     },
-    
-    // handlers for enter keydown FUTURE: add also for change, delete and toggleCompleted
-    addEnter: function () {
-        if (event.keyCode === 13) {
-            this.addTodo();
-        }
-    },
 };
 
 
@@ -121,9 +114,9 @@ var view = {
         }, this);
     },
     createDeleteBtn: function () {
-        var deleteBtn = document.createElement("button");
-        deleteBtn.textContent = "DELETE";
-        deleteBtn.className = "deleteBtn jol";
+        var deleteBtn = document.createElement("span");
+        deleteBtn.textContent = "X";
+        deleteBtn.className = "deleteBtn close";
         return deleteBtn;
     },
     setUpEventListeners: function () {
@@ -136,6 +129,13 @@ var view = {
             var clickedElement = event.target;
             if (clickedElement.classList.contains("deleteBtn")) {
                 handlers.deleteTodo(parseInt(clickedElement.parentNode.id));
+            }
+        });
+    // eventListener for keydown FUTURE: add also for change, delete and toggleCompleted
+        var addInput = document.getElementById("addTodoTextInput");
+        addInput.addEventListener('keydown', function () {
+            if (event.keyCode === 13) {
+                handlers.addTodo();
             }
         });
     }
