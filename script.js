@@ -94,7 +94,10 @@ var handlers = {
 var view = {
     displayTodos: function () {
         var todosUl = document.querySelector("#List");
+        var sendSection = document.querySelector("#sendSection");
         todosUl.innerHTML = "";
+        sendSection.innerHTML = "";
+        
         todoList.todos.forEach(function (todo, position) {
             var todoP = document.createElement("p");
             var todoLi = document.createElement("li");
@@ -103,7 +106,7 @@ var view = {
             
             if (todo.completed === true) {
                 todoTextWithComplition = todo.todoText;
-                todoLi.style.textDecoration = "line-through";
+                todoP.style.textDecoration = "line-through";
                 todoLi.style.opacity = ".4";
             } else {
                 todoTextWithComplition = todo.todoText;
@@ -115,7 +118,18 @@ var view = {
             todoLi.appendChild(this.createDoneBtn());
             todoLi.appendChild(todoP);
             todosUl.appendChild(todoLi);    // append li to ul
+            
+
         }, this);
+        var lis = document.querySelectorAll("li");
+        var lisLength = lis.length;
+        // if ul is not empty show section with sendBtn
+        if (lisLength > 0) {
+            sendSection.appendChild(this.createSendBtn());
+        } else {
+            sendSection.innerHTML = "";
+        }
+
     },
     createDeleteBtn: function () {
         var deleteBtn = document.createElement("span");
@@ -131,6 +145,14 @@ var view = {
         doneBtn.className = "doneBtn";
         doneBtn.appendChild(doneI);
         return doneBtn;
+    },
+    createSendBtn: function () {
+        var sendSection = document.querySelector("#sendSection");
+        var sendBtn = document.createElement("a");
+        sendBtn.className = "sendBtn";
+        sendBtn.textContent = "shere list";
+//        sendSection.appendChild(sendBtn);
+        return sendBtn;
     },
     setUpEventListeners: function () {
         // toggleAll eventListener
@@ -148,10 +170,11 @@ var view = {
         });
         // toggleCompleted eventListener on element that will be created (doneBtn)
         todosUl.addEventListener('click', function () {
-            var clickedElement = event.target.parentNode;
-            console.log(clickedElement);
-            if (clickedElement.classList.contains("doneBtn")) {
-                handlers.toggleCompleted(parseInt(clickedElement.parentNode.id));
+            // catches parent of clicked element
+            var clickedElementParent = event.target.parentNode;
+            
+            if (clickedElementParent.classList.contains("doneBtn")) {
+                handlers.toggleCompleted(parseInt(clickedElementParent.parentNode.id));
             }
         });
     // eventListener for keydown
@@ -168,8 +191,3 @@ var view = {
     }
 };
 view.setUpEventListeners();
-
-
-
-
-
