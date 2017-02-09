@@ -189,10 +189,10 @@ body {
         max-width: 80%;
     }
     .close {
-        font-size: 3rem;
+        font-size: 7rem;
     }
     .doneBtn {
-        font-size: 3rem;
+        font-size: 4rem;
         padding-right: 1rem;
     }
     #sendSection {
