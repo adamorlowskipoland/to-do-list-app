@@ -162,8 +162,9 @@ var view = {
         var sendSection = document.getElementById("sendSection");
         var sendBtn = document.createElement("p");
         sendBtn.className = "sendBtn";
-        sendBtn.textContent = "save list";
-//        sendSection.appendChild(sendBtn);
+        sendBtn.textContent = "share list";
+        sendBtn.setAttribute("href", "mailTo:");
+        sendBtn.setAttribute("type", "link");
         return sendBtn;
     },
     setUpEventListeners: function () {
