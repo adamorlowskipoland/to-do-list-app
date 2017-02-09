@@ -102,6 +102,7 @@ var view = {
             if (todo.completed === true) {
                 todoTextWithComplition = todo.todoText;
                 todoLi.style.textDecoration = "line-through";
+                todoLi.style.opacity = ".4";
             } else {
                 todoTextWithComplition = todo.todoText;
             }
@@ -144,7 +145,6 @@ var view = {
         todosUl.addEventListener('click', function () {
             var clickedElement = event.target;
             if (clickedElement.classList.contains("doneBtn")) {
-                clickedElement.style.opacity = ".1";
                 handlers.toggleCompleted(parseInt(clickedElement.parentNode.id));
             }
         });

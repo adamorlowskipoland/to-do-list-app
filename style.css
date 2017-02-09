@@ -85,7 +85,7 @@ input:focus {
     padding: 1rem;
     margin-top: .5rem;
     background: #ffeee5;
-    transition: all .7s ease;
+    transition: all .2s ease;
 }
 
 .ul li:hover .close, .doneBtn {
@@ -98,7 +98,7 @@ input:focus {
     opacity: .4;
     color: #fc4349;
     font-size: 1.5rem;
-    transition: all .3s ease;
+    transition: all .2s ease;
 }
 
 .close:hover {
