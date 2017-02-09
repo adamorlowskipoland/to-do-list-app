@@ -168,6 +168,7 @@ input:focus {
 @media screen and (max-width: 991px) {
     .wrapper {
         padding: .5rem 1rem;
+        max-width: 100%;
     }
 }
 
