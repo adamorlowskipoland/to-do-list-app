@@ -66,7 +66,7 @@ var handlers = {
         addTodoTextInput.value = "";
         view.displayTodos();
     },
-    changeTodo: function () {
+    changeTodo: function (position) {
         var changeTodoPositionInput = document.getElementById("changeTodoPositionInput");
         var changeTodoTextInput = document.getElementById("changeTodoTextInput");
         todoList.changeTodo(changeTodoPositionInput.valueAsNumber, changeTodoTextInput.value);
@@ -78,10 +78,8 @@ var handlers = {
         todoList.deleteTodo(position);
         view.displayTodos();
     },
-    toggleCompleted: function () {
-        var toggleCompletedPositionInput = document.getElementById("toggleCompletedPositionInput");
-        todoList.toggleCompleted(toggleCompletedPositionInput.valueAsNumber);
-        toggleCompletedPositionInput.value = "";
+    toggleCompleted: function (position) {
+        todoList.toggleCompleted(position);
         view.displayTodos();
     },
     toggleAll: function () {
@@ -129,10 +127,12 @@ var view = {
         return doneBtn;
     },
     setUpEventListeners: function () {
+        // toggleAll eventListener
         var btnToggleAll = document.getElementById("btnToggleAll");
         btnToggleAll.addEventListener('click', function () {
             handlers.toggleAll();
         });
+        // delete eventListener on element that will be created (deleteBtn)
         var todosUl = document.querySelector("#List");
         todosUl.addEventListener('click', function () {
             var clickedElement = event.target;
@@ -140,7 +140,13 @@ var view = {
                 handlers.deleteTodo(parseInt(clickedElement.parentNode.id));
             }
         });
-    // eventListener for keydown FUTURE: add also for change, delete and toggleCompleted
+        todosUl.addEventListener('click', function () {
+            var clickedElement = event.target;
+            if (clickedElement.classList.contains("doneBtn")) {
+                handlers.toggleCompleted(parseInt(clickedElement.parentNode.id));
+            }
+        });
+    // eventListener for keydown
         var addInput = document.getElementById("addTodoTextInput");
         addInput.addEventListener('keydown', function () {
             if (event.keyCode === 13) {
