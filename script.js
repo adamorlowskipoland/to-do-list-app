@@ -103,6 +103,7 @@ var view = {
             
             if (todo.completed === true) {
                 todoTextWithComplition = "(x) " + todo.todoText;
+                todoLi.style.textDecoration = "line-through";
             } else {
                 todoTextWithComplition = "( ) " + todo.todoText;
             }
@@ -110,6 +111,8 @@ var view = {
             todoLi.id = position;      // gives created li id
             todoLi.textContent = todoTextWithComplition;
             todoLi.appendChild(this.createDeleteBtn());     // creates new btn from CreateDeleteBtn method and append it to li
+            todoLi.appendChild(this.createDoneBtn());
+            todosUl.appendChild(todoLi);
             todosUl.appendChild(todoLi);    // append li to ul
         }, this);
     },
@@ -118,6 +121,12 @@ var view = {
         deleteBtn.textContent = "X";
         deleteBtn.className = "deleteBtn close";
         return deleteBtn;
+    },
+    createDoneBtn: function () {
+        var doneBtn = document.createElement("span");
+        doneBtn.textContent = "D";
+        doneBtn.className = "doneBtn";
+        return doneBtn;
     },
     setUpEventListeners: function () {
         var btnToggleAll = document.getElementById("btnToggleAll");
