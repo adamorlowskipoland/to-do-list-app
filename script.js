@@ -162,7 +162,7 @@ var view = {
         var sendSection = document.getElementById("sendSection");
         var sendBtn = document.createElement("p");
         sendBtn.className = "sendBtn";
-        sendBtn.textContent = "shere list";
+        sendBtn.textContent = "save list";
 //        sendSection.appendChild(sendBtn);
         return sendBtn;
     },

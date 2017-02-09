@@ -5,26 +5,26 @@
 
 body {
     background: #ffeee5;
-    font-size: 16px;
+    font-size: 10px;
 }
 
 .hr1 {
-    margin: 1rem auto;
+    margin: 0 auto;
     border: none;
     border-bottom: 1px solid #6b351c;
 }
 
 .hr {
-    margin: 3rem auto;
+    margin: .5rem auto;
     border: none;
     border-bottom: 1px solid #6b351c;
 }
 
 .wrapper {
-    width: 80%;
+    max-width: 600px;
     margin: 0 auto;
     background: #ffd3be;
-    padding: 2rem 5rem;
+    padding: .5rem 2rem;
     color: #6b351c;
     
 }
@@ -34,6 +34,7 @@ body {
     text-align: center;
     padding: 1rem 0;
     letter-spacing: .5rem;
+    margin: 0;
 /*    word-spacing: 1rem;*/
 /*    border-bottom: 1px solid #8e563b;*/
 }
@@ -41,18 +42,21 @@ body {
 .content {
     width: 100%;
     margin: 0 auto;
-    padding: 4rem 5rem;
+    padding: .5rem 5rem;
 /*    border: 1px solid #6b351c;*/
 }
 
 .toggleP {
-    font-size: 1.5rem;
+    font-size: 1rem;
     text-align: center;
-    letter-spacing: .5rem;
-    margin: 0 0 2rem 0;
-    padding: 2rem 1rem;
-    border-bottom: 1px solid #6b351c;
+    letter-spacing: .3rem;
+    margin: 0;
+    padding: 1rem;
     cursor: alias;
+}
+
+.toggleP:hover {
+    
 }
 
 .toggleP i {
@@ -99,7 +103,7 @@ input:focus {
     text-transform: uppercase;
     letter-spacing: .1rem;
     padding: 1rem;
-    margin-top: .5rem;
+    margin-top: .2rem;
     background: #ffeee5;
     transition: all .2s ease;
 }
@@ -107,7 +111,7 @@ input:focus {
 .ul li p {
     margin: auto;
     display: inline-block;
-    width: 90%;
+    max-width: 80%;
 }
 
 .close {
@@ -192,4 +196,7 @@ input:focus {
     }
 }
 
+@media(max-width: 544px) {
+    
+}
 
