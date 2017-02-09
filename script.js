@@ -102,20 +102,23 @@ var view = {
             var todoP = document.createElement("p");
             var todoLi = document.createElement("li");
             
+            var doneBtn;
             var todoTextWithComplition = "";
             
             if (todo.completed === true) {
                 todoTextWithComplition = todo.todoText;
                 todoP.style.textDecoration = "line-through";
                 todoLi.style.opacity = ".4";
+                doneBtn = this.createDoneBtnChecked();
             } else {
                 todoTextWithComplition = todo.todoText;
+                doneBtn = this.createDoneBtnCheck();
             }
             
             todoLi.id = position;      // gives created li id
             todoP.textContent = todoTextWithComplition;
             todoLi.appendChild(this.createDeleteBtn());     // creates new btn from CreateDeleteBtn method and append it to li
-            todoLi.appendChild(this.createDoneBtn());
+            todoLi.appendChild(doneBtn);
             todoLi.appendChild(todoP);
             todosUl.appendChild(todoLi);    // append li to ul
             
@@ -137,7 +140,16 @@ var view = {
         deleteBtn.className = "deleteBtn close";
         return deleteBtn;
     },
-    createDoneBtn: function () {
+    createDoneBtnCheck: function () {
+        var doneI = document.createElement("i");
+        var doneBtn = document.createElement("span");
+        doneI.className = "fa fa-circle-thin";
+//        doneBtn.textContent = "done:";
+        doneBtn.className = "doneBtn";
+        doneBtn.appendChild(doneI);
+        return doneBtn;
+    },
+    createDoneBtnChecked: function () {
         var doneI = document.createElement("i");
         var doneBtn = document.createElement("span");
         doneI.className = "fa fa-check";
@@ -147,8 +159,8 @@ var view = {
         return doneBtn;
     },
     createSendBtn: function () {
-        var sendSection = document.querySelector("#sendSection");
-        var sendBtn = document.createElement("a");
+        var sendSection = document.getElementById("sendSection");
+        var sendBtn = document.createElement("p");
         sendBtn.className = "sendBtn";
         sendBtn.textContent = "shere list";
 //        sendSection.appendChild(sendBtn);
