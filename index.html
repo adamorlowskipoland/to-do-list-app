@@ -4,37 +4,42 @@
     <meta charset="UTF-8">
     <title>toDoList_app</title>
     <link rel="stylesheet" href="style.css" type="text/css">
-    <link rel="stylesheet" href="fontAwesome/font-awesome.css" type="text/css">
+<!--    <link rel="stylesheet" href="fontAwesome/font-awesome.css" type="text/css">-->
 </head>
 <body>
    
     <div class="wrapper">
         <h1 class="h1">TODO LIST</h1>
-        <div>
-            <p onclick="handlers.toggleAll()"><i class="fa fa-check" aria-hidden="true"></i><SMALL> TOGGLE ALL!</SMALL></p>
-                
+        
+        <div class="content">
+            <div>
+                <p id="btnToggleAll"><i class="fa fa-check" aria-hidden="true"></i><SMALL> TOGGLE ALL!</SMALL></p>
+
+            </div>
+
+            <div>
+                <input type="text" id="addTodoTextInput" class="addInput" onKeyPress="handlers.addEnter()">
+                <button onclick="handlers.addTodo()">ADD</button>
+            </div>  
+
+<!--
+            <div>
+                <input id="changeTodoPositionInput" type="number">
+                <input id="changeTodoTextInput" type="text">
+                <button onclick="handlers.changeTodo()">CHANGE</button>
+            </div>
+-->
+
+
+            <div>
+                <input id="toggleCompletedPositionInput" type="number">
+                <button onclick="handlers.toggleCompleted()">MARK AS DONE!</button>
+            </div> 
+
+            <ul id="List" class="ul">
+
+            </ul>
         </div>
-
-        <div>
-            <input type="text" id="addTodoTextInput" onKeyPress="handlers.addEnter()">
-            <button onclick="handlers.addTodo()">ADD</button>
-        </div>  
-
-        <div>
-            <input id="changeTodoPositionInput" type="number">
-            <input id="changeTodoTextInput" type="text">
-            <button onclick="handlers.changeTodo()">CHANGE</button>
-        </div>
-
-
-        <div>
-            <input id="toggleCompletedPositionInput" type="number">
-            <button onclick="handlers.toggleCompleted()">MARK AS DONE!</button>
-        </div> 
-
-        <ul id="List">
-
-        </ul>
     </div>
     
     <script src="script.js"></script>

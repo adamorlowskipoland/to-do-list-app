@@ -26,3 +26,37 @@ body {
     border-bottom: 1px solid #8e563b;
 }
 
+.content {
+    width: 100%;
+    margin: 0 auto;
+    padding: 4rem 15rem;
+    border: 1px solid #6b351c;
+}
+
+.addInput {
+    width: 100%;
+    height: 3rem;
+    line-height: 3rem;
+    font-size: 1.5rem;
+    font-weight: 200;
+    letter-spacing: .1rem;
+    padding: 2rem 1rem;
+    color: #6b351c;
+    background: #ffeee5;
+}
+
+.ul {
+    width: 100%;
+/*    height: 3rem;*/
+    color: #6b351c;
+}
+
+.ul li {
+    line-height: 1.5rem;
+    font-size: 1.3rem;
+    font-weight: 200;
+    letter-spacing: .1rem;
+    padding: 1rem 1rem;
+    margin-top: 1rem;
+    background: #ffeee5;
+}
