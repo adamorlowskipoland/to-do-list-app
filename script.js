@@ -96,7 +96,9 @@ var view = {
         var todosUl = document.querySelector("#List");
         todosUl.innerHTML = "";
         todoList.todos.forEach(function (todo, position) {
+            var todoP = document.createElement("p");
             var todoLi = document.createElement("li");
+            
             var todoTextWithComplition = "";
             
             if (todo.completed === true) {
@@ -108,10 +110,10 @@ var view = {
             }
             
             todoLi.id = position;      // gives created li id
-            todoLi.textContent = todoTextWithComplition;
+            todoP.textContent = todoTextWithComplition;
             todoLi.appendChild(this.createDeleteBtn());     // creates new btn from CreateDeleteBtn method and append it to li
             todoLi.appendChild(this.createDoneBtn());
-            todosUl.appendChild(todoLi);
+            todoLi.appendChild(todoP);
             todosUl.appendChild(todoLi);    // append li to ul
         }, this);
     },
@@ -122,9 +124,12 @@ var view = {
         return deleteBtn;
     },
     createDoneBtn: function () {
+        var doneI = document.createElement("i");
         var doneBtn = document.createElement("span");
-        doneBtn.textContent = "D";
+        doneI.className = "fa fa-check";
+//        doneBtn.textContent = "done:";
         doneBtn.className = "doneBtn";
+        doneBtn.appendChild(doneI);
         return doneBtn;
     },
     setUpEventListeners: function () {
@@ -143,7 +148,8 @@ var view = {
         });
         // toggleCompleted eventListener on element that will be created (doneBtn)
         todosUl.addEventListener('click', function () {
-            var clickedElement = event.target;
+            var clickedElement = event.target.parentNode;
+            console.log(clickedElement);
             if (clickedElement.classList.contains("doneBtn")) {
                 handlers.toggleCompleted(parseInt(clickedElement.parentNode.id));
             }

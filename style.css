@@ -44,6 +44,10 @@ body {
     cursor: alias;
 }
 
+.toggleP i {
+    color: #127F5F;
+}
+
 input {
     border: none;
     transition: all .7s ease;
@@ -92,6 +96,12 @@ input:focus {
     visibility: visible;
 }
 
+.ul li p {
+    margin: auto;
+    display: inline-block;
+    width: 90%;
+}
+
 .close {
     visibility: hidden;
     float: right;
@@ -111,8 +121,9 @@ input:focus {
     float: left;
     opacity: .6;
     color: #127F5F;
-    font-size: 1.5rem;
+    font-size: 1rem;
     padding-right: 1rem;
+    text-transform: lowercase;
     transition: all .3s ease;
     
 }
