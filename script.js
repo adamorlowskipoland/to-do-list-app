@@ -123,14 +123,18 @@ var view = {
     createDeleteBtn: function () {
         var deleteBtn = document.createElement("button");
         deleteBtn.textContent = "DELETE";
-        deleteBtn.className = "deleteBtn";
+        deleteBtn.className = "deleteBtn jol";
         return deleteBtn;
     },
     setUpEventListeners: function () {
+        var btnToggleAll = document.getElementById("btnToggleAll");
+        btnToggleAll.addEventListener('click', function () {
+            handlers.toggleAll();
+        });
         var todosUl = document.querySelector("#List");
         todosUl.addEventListener('click', function () {
             var clickedElement = event.target;
-            if (clickedElement.className === "deleteBtn") {
+            if (clickedElement.classList.contains("deleteBtn")) {
                 handlers.deleteTodo(parseInt(clickedElement.parentNode.id));
             }
         });
