@@ -161,24 +161,24 @@ input:focus {
 }
 
 
-@media(min-width: 992px) and (max-width: 1199px) {
+@media screen and (min-width: 992px) and (max-width: 1199px) {
 
 }
 
-@media(max-width: 991px) {
+@media screen and (max-width: 991px) {
     .wrapper {
         padding: .5rem 1rem;
     }
 }
 
-@media(max-width: 767px) {
+@media screen and (max-width: 767px) {
     .wrapper {
         padding: .5rem 0;
         border: 1px solid #6b351c;
     }
 }
 
-@media(max-width: 544px) {
+@media screen and (max-width: 544px) {
     
 }
 
