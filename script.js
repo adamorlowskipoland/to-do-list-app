@@ -162,7 +162,7 @@ var view = {
         var sendSection = document.getElementById("sendSection");
         var sendBtn = document.createElement("p");
         sendBtn.className = "sendBtn";
-//        sendBtn.id = "trigger"; //needed to modal plugin
+//        sendBtn.id = "trigger"; //needed to modal plugin 
         sendBtn.textContent = "share list";
         sendBtn.setAttribute("type", "button");
         return sendBtn;
@@ -175,14 +175,14 @@ var view = {
         });
         // delete eventListener on element that will be created (deleteBtn)
         var todosUl = document.querySelector("#List");
-        todosUl.addEventListener('click', function () {
+        todosUl.addEventListener('click', function (event) {
             var clickedElement = event.target;
             if (clickedElement.classList.contains("deleteBtn")) {
                 handlers.deleteTodo(parseInt(clickedElement.parentNode.id));
             }
         });
         // toggleCompleted eventListener on element that will be created (doneBtn)
-        todosUl.addEventListener('click', function () {
+        todosUl.addEventListener('click', function (event) {
             // catches parent of clicked element
             var clickedElementParent = event.target.parentNode;
             
@@ -192,7 +192,7 @@ var view = {
         });
     // eventListener for keydown
         var addInput = document.getElementById("addTodoTextInput");
-        addInput.addEventListener('keydown', function () {
+        addInput.addEventListener('keydown', function (event) {
             if (event.keyCode === 13) {
                 if (addInput.value) {
                     handlers.addTodo();
