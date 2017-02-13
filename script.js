@@ -162,9 +162,9 @@ var view = {
         var sendSection = document.getElementById("sendSection");
         var sendBtn = document.createElement("p");
         sendBtn.className = "sendBtn";
+//        sendBtn.id = "trigger"; //needed to modal plugin
         sendBtn.textContent = "share list";
-        sendBtn.setAttribute("href", "mailTo:");
-        sendBtn.setAttribute("type", "link");
+        sendBtn.setAttribute("type", "button");
         return sendBtn;
     },
     setUpEventListeners: function () {
