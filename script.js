@@ -172,7 +172,7 @@ var view = {
         var btnToggleAll = document.getElementById("btnToggleAll");
         btnToggleAll.addEventListener('click', function () {
             handlers.toggleAll();
-        });
+        }, false);
         // delete eventListener on element that will be created (deleteBtn)
         var todosUl = document.querySelector("#List");
         todosUl.addEventListener('click', function (event) {
@@ -180,7 +180,7 @@ var view = {
             if (clickedElement.classList.contains("deleteBtn")) {
                 handlers.deleteTodo(parseInt(clickedElement.parentNode.id));
             }
-        });
+        }, false);
         // toggleCompleted eventListener on element that will be created (doneBtn)
         todosUl.addEventListener('click', function (event) {
             // catches parent of clicked element
@@ -189,7 +189,7 @@ var view = {
             if (clickedElementParent.classList.contains("doneBtn")) {
                 handlers.toggleCompleted(parseInt(clickedElementParent.parentNode.id));
             }
-        });
+        }, false);
     // eventListener for keydown
         var addInput = document.getElementById("addTodoTextInput");
         addInput.addEventListener('keydown', function (event) {
@@ -200,7 +200,7 @@ var view = {
                     return;
                 }
             }
-        });
+        }, false);
     }
 };
 view.setUpEventListeners();
