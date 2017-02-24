@@ -1,6 +1,8 @@
+
+
 var todoList = {
     // array with tasks (todos)
-    todos: [],
+    todos: JSON.parse(localStorage.getItem('todos')) || [],
     
     // pushes in array task
     addTodo: function (todoText) {
@@ -8,6 +10,7 @@ var todoList = {
             todoText: todoText,
             completed: false
         });
+        localStorage.setItem('todos', JSON.stringify(this.todos));
     },
 
     // changes elements in array takse parameter - which elem (position) change for what (todoText)
@@ -19,6 +22,7 @@ var todoList = {
     // deletes tasks from array
     deleteTodo: function (position) {
         this.todos.splice(position, 1);
+        localStorage.setItem('todos', JSON.stringify(this.todos));
     },
     
     
@@ -26,6 +30,7 @@ var todoList = {
     toggleCompleted: function (position) {
         var todo = this.todos[position];
         todo.completed = !todo.completed;
+        localStorage.setItem('todos', JSON.stringify(this.todos));
     },
     
     
@@ -50,6 +55,7 @@ var todoList = {
                 todo.completed = true;
             }
         });
+        localStorage.setItem('todos', JSON.stringify(this.todos));
     }
 };
 
@@ -204,3 +210,6 @@ var view = {
     }
 };
 view.setUpEventListeners();
+(function IIWC() {
+    view.displayTodos();
+})();
