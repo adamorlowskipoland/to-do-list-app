@@ -22,7 +22,7 @@ var todoList = {
     // deletes tasks from array
     deleteTodo: function (position) {
         this.todos.splice(position, 1);
-        localStorage.setItem('todos', JSON.stringify(this.todos));
+        handlers.setItem();
     },
     
     
@@ -30,7 +30,7 @@ var todoList = {
     toggleCompleted: function (position) {
         var todo = this.todos[position];
         todo.completed = !todo.completed;
-        localStorage.setItem('todos', JSON.stringify(this.todos));
+        handlers.setItem();
     },
     
     
@@ -55,7 +55,8 @@ var todoList = {
                 todo.completed = true;
             }
         });
-        localStorage.setItem('todos', JSON.stringify(this.todos));
+//        localStorage.setItem('todos', JSON.stringify(this.todos));
+        handlers.setItem();
     }
 };
 
@@ -92,6 +93,15 @@ var handlers = {
         todoList.toggleAll();
         view.displayTodos();
     },
+    setItem: function () {
+        localStorage.setItem('todos', JSON.stringify(todoList.todos));
+        view.displayTodos();
+    },
+    deleteAll: function () {
+        todoList.todos = [];
+        localStorage.removeItem('todos');
+        view.displayTodos();
+    }
 };
 
 
@@ -99,6 +109,13 @@ var handlers = {
 // takes value from inputs in html
 var view = {
     displayTodos: function () {
+        var toggleBtns = document.getElementById('toggleBtns');
+        if (todoList.todos.length !== 0) {
+            toggleBtns.style.display = "block";
+        } else {
+            toggleBtns.style.display = "none";
+        }
+        
         var todosUl = document.querySelector("#List");
         var sendSection = document.querySelector("#sendSection");
         todosUl.innerHTML = "";
@@ -206,6 +223,10 @@ var view = {
                     return;
                 }
             }
+        }, false);
+        var deleteAll = document.getElementById("deleteAll");
+        deleteAll.addEventListener('click', function () {
+            handlers.deleteAll();
         }, false);
     }
 };
