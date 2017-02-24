@@ -205,6 +205,24 @@ body {
     }
 }
 
+.toggleBtns {
+/*    display: none;*/
+}
+
+.toggleBtn {
+    font-size: 10px;
+    display: inline-block;
+    width: 30%;
+    margin: 15px auto 0;
+    cursor: pointer;
+    opacity: .6;
+    transition: .3s;
+}
+
+.toggleBtn:hover {
+    opacity: 1;
+}
+
 @media screen and (max-width: 767px) {
     .wrapper {
         padding: .5rem 0;
