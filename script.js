@@ -109,13 +109,21 @@ var handlers = {
 // takes value from inputs in html
 var view = {
     displayTodos: function () {
+//        var allTogglebtn = document.getElementsByClassName('toggleBtn');
+//        allTogglebtn.forEach(function (p) {
+//            p.classList.remove('active');
+//        })
+//        var all = document.getElementById('all');
+//        all.classList.add('active');
+        var btnToggleAll = document.getElementById('btnToggleAll');
         var toggleBtns = document.getElementById('toggleBtns');
         if (todoList.todos.length !== 0) {
             toggleBtns.style.display = "block";
+            btnToggleAll.style.display = "block";
         } else {
             toggleBtns.style.display = "none";
+            btnToggleAll.style.display = "none";
         }
-        
         var todosUl = document.querySelector("#List");
         var sendSection = document.querySelector("#sendSection");
         todosUl.innerHTML = "";
@@ -155,8 +163,102 @@ var view = {
         } else {
             sendSection.innerHTML = "";
         }
-
     },
+    displayDoneTodos: function () {
+//        var allTogglebtn = document.getElementsByClassName('toggleBtn');
+//        allTogglebtn.forEach(function (p) {
+//            p.classList.remove('active');
+//        })
+//        var completed = document.getElementById('completed');
+//        completed.classList.add('active');
+        var btnToggleAll = document.getElementById('btnToggleAll');
+        var toggleBtns = document.getElementById('toggleBtns');
+        if (todoList.todos.length !== 0) {
+            toggleBtns.style.display = "block";
+            btnToggleAll.style.display = "block";
+        } else {
+            toggleBtns.style.display = "none";
+            btnToggleAll.style.display = "none";
+        }
+        var todosUl = document.querySelector("#List");
+        var sendSection = document.querySelector("#sendSection");
+        todosUl.innerHTML = "";
+        sendSection.innerHTML = "";
+        
+        todoList.todos.forEach(function (todo, position) {
+            var doneBtn;
+            var todoTextWithComplition = "";
+            if (todo.completed === true) {
+                var todoP = document.createElement("p");
+                var todoLi = document.createElement("li");
+                todoTextWithComplition = todo.todoText;
+                todoP.style.textDecoration = "line-through";
+                todoLi.style.opacity = ".4";
+                doneBtn = this.createDoneBtnChecked();
+                todoLi.id = position;      // gives created li id
+                todoP.textContent = todoTextWithComplition;
+                todoLi.appendChild(this.createDeleteBtn());     // creates new btn from CreateDeleteBtn method and append it to li
+                todoLi.appendChild(doneBtn);
+                todoLi.appendChild(todoP);
+                todosUl.appendChild(todoLi);    // append li to ul
+            } 
+        }, this);
+        var lis = document.querySelectorAll("li");
+        var lisLength = lis.length;
+        // if ul is not empty show section with sendBtn
+        if (lisLength > 0) {
+            sendSection.appendChild(this.createSendBtn());
+        } else {
+            sendSection.innerHTML = "";
+        }
+    },
+    displayInProgressTodos: function () {
+//        var allTogglebtn = document.getElementsByClassName('toggleBtn');
+//        allTogglebtn.forEach(function (p) {
+//            p.classList.remove('active');
+//        })
+//        var inProgress = document.getElementById('inProgress');
+//        inProgress.classList.add('active');
+        var btnToggleAll = document.getElementById('btnToggleAll');
+        var toggleBtns = document.getElementById('toggleBtns');
+        if (todoList.todos.length !== 0) {
+            toggleBtns.style.display = "block";
+            btnToggleAll.style.display = "block";
+        } else {
+            toggleBtns.style.display = "none";
+            btnToggleAll.style.display = "none";
+        }
+        var todosUl = document.querySelector("#List");
+        var sendSection = document.querySelector("#sendSection");
+        todosUl.innerHTML = "";
+        sendSection.innerHTML = "";
+        
+        todoList.todos.forEach(function (todo, position) {
+            var doneBtn;
+            var todoTextWithComplition = "";
+            if (todo.completed !== true) {
+                var todoP = document.createElement("p");
+                var todoLi = document.createElement("li");
+                todoTextWithComplition = todo.todoText;
+                doneBtn = this.createDoneBtnCheck();
+                todoLi.id = position;      // gives created li id
+                todoP.textContent = todoTextWithComplition;
+                todoLi.appendChild(this.createDeleteBtn());     // creates new btn from CreateDeleteBtn method and append it to li
+                todoLi.appendChild(doneBtn);
+                todoLi.appendChild(todoP);
+                todosUl.appendChild(todoLi);    // append li to ul
+            }
+        }, this);
+        var lis = document.querySelectorAll("li");
+        var lisLength = lis.length;
+        // if ul is not empty show section with sendBtn
+        if (lisLength > 0) {
+            sendSection.appendChild(this.createSendBtn());
+        } else {
+            sendSection.innerHTML = "";
+        }
+        
+    },    
     createDeleteBtn: function () {
         var deleteBtn = document.createElement("span");
         deleteBtn.textContent = "X";
@@ -224,6 +326,18 @@ var view = {
                 }
             }
         }, false);
+        var showAll = document.getElementById('all');
+        showAll.addEventListener('click', function () {
+            view.displayTodos();
+        }, false);
+        var showCompleted = document.getElementById('completed');
+        showCompleted.addEventListener('click', function () {
+            view.displayDoneTodos();
+        });
+        var showInProgress = document.getElementById('inProgress');
+        showInProgress.addEventListener('click', function () {
+            view.displayInProgressTodos();
+        });
         var deleteAll = document.getElementById("deleteAll");
         deleteAll.addEventListener('click', function () {
             handlers.deleteAll();

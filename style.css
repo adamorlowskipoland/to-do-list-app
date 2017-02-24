@@ -49,6 +49,7 @@ body {
 }
 
 .toggleP {
+    display: none;
     font-size: 1rem;
     text-align: center;
     letter-spacing: .3rem;
@@ -166,14 +167,20 @@ body {
     text-transform: uppercase;
     letter-spacing: .1rem;
     display: inline-block;
-    width: 30%;
+    width: 24%;
     margin: 15px auto 0;
     cursor: pointer;
     opacity: .6;
     transition: .3s;
+    padding-bottom: 5px;
 }
 
 .toggleBtn:hover {
+    opacity: 1;
+}
+
+.active {
+    border-bottom: 1px #6b351c solid;
     opacity: 1;
 }
 
