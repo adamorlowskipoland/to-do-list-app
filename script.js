@@ -141,7 +141,6 @@ var view = {
         var todosUl = document.querySelector("#List");
         var sendSection = document.querySelector("#sendSection");
         todosUl.innerHTML = "";
-        sendSection.innerHTML = "";
         
         todoList.todos.forEach(function (todo, position) {
             var todoP = document.createElement("p");
@@ -169,13 +168,14 @@ var view = {
             
 
         }, this);
+        var sendBtn = document.getElementById('sendBtn');
         var lis = document.querySelectorAll("li");
         var lisLength = lis.length;
         // if ul is not empty show section with sendBtn
         if (lisLength > 0) {
-            sendSection.appendChild(this.createSendBtn());
+            sendBtn.style.display = 'inline';
         } else {
-            sendSection.innerHTML = "";
+            sendBtn.style.display = 'none';
         }
     },
     displayDoneTodos: function () {
@@ -197,7 +197,6 @@ var view = {
         var todosUl = document.querySelector("#List");
         var sendSection = document.querySelector("#sendSection");
         todosUl.innerHTML = "";
-        sendSection.innerHTML = "";
         
         todoList.todos.forEach(function (todo, position) {
 //            var doneBtn;
@@ -217,13 +216,14 @@ var view = {
                 todosUl.appendChild(todoLi);    // append li to ul
             } 
         }, this);
+        var sendBtn = document.getElementById('sendBtn');
         var lis = document.querySelectorAll("li");
         var lisLength = lis.length;
         // if ul is not empty show section with sendBtn
         if (lisLength > 0) {
-            sendSection.appendChild(this.createSendBtn());
+            sendBtn.style.display = 'inline';
         } else {
-            sendSection.innerHTML = "";
+            sendBtn.style.display = 'none';
         }
     },
     displayInProgressTodos: function () {
@@ -246,7 +246,6 @@ var view = {
         var sendSection = document.querySelector("#sendSection");
         
         todosUl.innerHTML = "";
-        sendSection.innerHTML = "";
         
         todoList.todos.forEach(function (todo, position) {
 //            var doneBtn;
@@ -264,15 +263,15 @@ var view = {
                 todosUl.appendChild(todoLi);    // append li to ul
             }
         }, this);
+        var sendBtn = document.getElementById('sendBtn');
         var lis = document.querySelectorAll("li");
         var lisLength = lis.length;
         // if ul is not empty show section with sendBtn
         if (lisLength > 0) {
-            sendSection.appendChild(this.createSendBtn());
+            sendBtn.style.display = 'inline';
         } else {
-            sendSection.innerHTML = "";
+            sendBtn.style.display = 'none';
         }
-        
     },    
     createDeleteBtn: function () {
         var deleteBtn = document.createElement("span");
@@ -297,15 +296,6 @@ var view = {
         doneBtn.className = "doneBtn";
         doneBtn.appendChild(doneI);
         return doneBtn;
-    },
-    createSendBtn: function () {
-        var sendSection = document.getElementById("sendSection");
-        var sendBtn = document.createElement("p");
-        sendBtn.className = "sendBtn";
-        sendBtn.id = "trigger"; //needed to modal plugin 
-        sendBtn.textContent = "share list";
-        sendBtn.setAttribute("type", "button");
-        return sendBtn;
     },
     openModal: function () {
         var modal = document.getElementById('modal');
@@ -366,10 +356,10 @@ var view = {
             handlers.deleteAll();
         }, false);
 //        opening modal
-//        var btnModalOpen = document.getElementById('#trigger');
-//        btnModalOpen.addEventListener('click', function () {
-//            view.openModal();
-//        }, false);
+        var btnModalOpen = document.getElementById('sendBtn');
+        btnModalOpen.addEventListener('click', function () {
+            view.openModal();
+        }, false);
 //        closing modal
         var btnModalClose = document.getElementById('btn__modal--close');
         btnModalClose.addEventListener('click', function () {
