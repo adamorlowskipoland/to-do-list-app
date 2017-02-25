@@ -310,7 +310,7 @@ var view = {
         
         var lisToPut = document.querySelectorAll('#List > li');
         lisToPut.forEach(function (li) {
-            listToSend.textContent += "- " + li.lastChild.textContent + "\n ";
+            listToSend.textContent += "- " + li.lastChild.textContent + "\n";
         })
         
         
