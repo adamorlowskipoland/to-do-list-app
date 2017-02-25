@@ -10,7 +10,7 @@ var todoList = {
             todoText: todoText,
             completed: false
         });
-        localStorage.setItem('todos', JSON.stringify(this.todos));
+        handlers.setItem();
     },
 
     // changes elements in array takse parameter - which elem (position) change for what (todoText)
@@ -65,13 +65,21 @@ var todoList = {
 // runs on events in html file
 var handlers = {
     displayTodos: function () {
-        view.displayTodos();
+        var completed = document.getElementById('completed');
+        var inProgress = document.getElementById('inProgress');
+        if (inProgress.classList.contains('active')) {
+            view.displayInProgressTodos();
+        } else if (completed.classList.contains('active')) {
+            view.displayDoneTodos();
+        } else {
+            view.displayTodos();
+        }
     },
     addTodo: function () {
         var addTodoTextInput = document.getElementById("addTodoTextInput");
         todoList.addTodo(addTodoTextInput.value);
         addTodoTextInput.value = "";
-        view.displayTodos();
+        this.displayTodos();
     },
     changeTodo: function (position) {
         var changeTodoPositionInput = document.getElementById("changeTodoPositionInput");
@@ -79,28 +87,28 @@ var handlers = {
         todoList.changeTodo(changeTodoPositionInput.valueAsNumber, changeTodoTextInput.value);
         changeTodoPositionInput.value = "";
         changeTodoTextInput.value = "";
-        view.displayTodos();
+        this.displayTodos();
     },
     deleteTodo: function (position) {
         todoList.deleteTodo(position);
-        view.displayTodos();
+        this.displayTodos();
     },
     toggleCompleted: function (position) {
         todoList.toggleCompleted(position);
-        view.displayTodos();
+        this.displayTodos();
     },
     toggleAll: function () {
         todoList.toggleAll();
-        view.displayTodos();
+        this.displayTodos();
     },
     setItem: function () {
         localStorage.setItem('todos', JSON.stringify(todoList.todos));
-        view.displayTodos();
+        this.displayTodos();
     },
     deleteAll: function () {
         todoList.todos = [];
         localStorage.removeItem('todos');
-        view.displayTodos();
+        this.displayTodos();
     }
 };
 
@@ -194,11 +202,11 @@ var view = {
                 todoTextWithComplition = todo.todoText;
                 todoP.style.textDecoration = "line-through";
                 todoLi.style.opacity = ".4";
-//                doneBtn = this.createDoneBtnChecked();
+                doneBtn = this.createDoneBtnChecked();
                 todoLi.id = position;      // gives created li id
                 todoP.textContent = todoTextWithComplition;
-//                todoLi.appendChild(this.createDeleteBtn());     // creates new btn from CreateDeleteBtn method and append it to li
-//                todoLi.appendChild(doneBtn);
+                todoLi.appendChild(this.createDeleteBtn());     // creates new btn from CreateDeleteBtn method and append it to li
+                todoLi.appendChild(doneBtn);
                 todoLi.appendChild(todoP);
                 todosUl.appendChild(todoLi);    // append li to ul
             } 
@@ -241,11 +249,11 @@ var view = {
                 var todoP = document.createElement("p");
                 var todoLi = document.createElement("li");
                 todoTextWithComplition = todo.todoText;
-//                doneBtn = this.createDoneBtnCheck();
+                doneBtn = this.createDoneBtnCheck();
                 todoLi.id = position;      // gives created li id
                 todoP.textContent = todoTextWithComplition;
-//                todoLi.appendChild(this.createDeleteBtn());     // creates new btn from CreateDeleteBtn method and append it to li
-//                todoLi.appendChild(doneBtn);
+                todoLi.appendChild(this.createDeleteBtn());     // creates new btn from CreateDeleteBtn method and append it to li
+                todoLi.appendChild(doneBtn);
                 todoLi.appendChild(todoP);
                 todosUl.appendChild(todoLi);    // append li to ul
             }
