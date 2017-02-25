@@ -105,7 +105,7 @@ body {
     font-weight: 200;
     text-transform: uppercase;
     letter-spacing: .1rem;
-    padding: 1rem;
+    padding: 0 1rem;
     margin-top: .2rem;
     background: #ffeee5;
     transition: all .2s ease;
@@ -210,26 +210,26 @@ body {
         font-size: 4rem;
     }
     .ul li {
-        line-height: 4rem;
+        line-height: 8rem;
         font-size: 3rem;
-        padding: 1rem;
-        margin-top: .4rem;
+        padding: 0 1rem;
+        margin-top: .8rem;
     }
 
     .ul li p {
         max-width: 80%;
     }
     .close {
-        font-size: 7rem;
+        font-size: 8rem;
     }
     .doneBtn {
-        font-size: 4rem;
+        font-size: 5rem;
         padding-right: 1rem;
     }
     .toggleBtn {
-    font-size: 1.5rem;
-    width: 80%;
-    margin-top: 3rem;
+        font-size: 1.5rem;
+        width: 80%;
+        margin-top: 3rem;
     }
     #sendSection {
         margin-top: 8rem;
