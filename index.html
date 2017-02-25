@@ -45,7 +45,7 @@
             
             
             <div id="sendSection">
-                
+<!--                <p class="sendBtn" id="sendBtn" type="button">share list</p>-->
             </div>
             
         </div>
@@ -54,14 +54,12 @@
 <!--    FUTURE: this needs to be reconfigurated    -->
 <!--    modal -->
     <div id="modal" class="modal modal--active">
-        <form action="emailto:" class="form">
+        <form action="mailto:" method="post" class="form" id="sendList">
             <button type="button" id="btn__modal--close" class="btn__modal--close">X</button>
             <input type="email" name="email" id="email" class="email" placeholder="... put an e-mail address" required autofocus>
             <textarea name="list" id="listTosend" class="textarea"  disabled></textarea>
             <textarea name="messenge" id="messenge" class="textarea"  placeholder="... add a short note"></textarea>
             <input type="submit" value="SEND" id="btn__modal--send" class="btn__modal--send">
-            
-            
         </form>
     </div>
 <!--   end of modal -->

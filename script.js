@@ -109,6 +109,12 @@ var handlers = {
         todoList.todos = [];
         localStorage.removeItem('todos');
         this.displayTodos();
+    },
+    sendSubmit: function () {
+        var sendList = document.getElementById('sendList');
+        var email = document.getElementById('email').value;
+        var address = "mailto:" + email;
+        sendList.setAttribute("action", address);
     }
 };
 
@@ -296,10 +302,18 @@ var view = {
         var sendSection = document.getElementById("sendSection");
         var sendBtn = document.createElement("p");
         sendBtn.className = "sendBtn";
-//        sendBtn.id = "trigger"; //needed to modal plugin 
+        sendBtn.id = "trigger"; //needed to modal plugin 
         sendBtn.textContent = "share list";
         sendBtn.setAttribute("type", "button");
         return sendBtn;
+    },
+    openModal: function () {
+        var modal = document.getElementById('modal');
+        modal.classList.add('modal--active');
+    },
+    closeModal: function () {
+        var modal = document.getElementById('modal');
+        modal.classList.remove('modal--active');
     },
     setUpEventListeners: function () {
         // toggleAll eventListener
@@ -351,9 +365,24 @@ var view = {
         deleteAll.addEventListener('click', function () {
             handlers.deleteAll();
         }, false);
+//        opening modal
+//        var btnModalOpen = document.getElementById('#trigger');
+//        btnModalOpen.addEventListener('click', function () {
+//            view.openModal();
+//        }, false);
+//        closing modal
+        var btnModalClose = document.getElementById('btn__modal--close');
+        btnModalClose.addEventListener('click', function () {
+            view.closeModal();
+        }, false);
+//        set mailto attribiute to form
+        var btnSubmit = document.getElementById('btn__modal--send');
+        btnSubmit.addEventListener('click', function () {
+            handlers.sendSubmit();
+        })
     }
 };
-view.setUpEventListeners();
 (function IIWC() {
+    view.setUpEventListeners();
     view.displayTodos();
 })();

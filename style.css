@@ -275,7 +275,7 @@ body {
 }
 .btn__modal--send:focus {
     outline: none;
-    border-bottom: 1px solid #ffd3be;
+    border-bottom: 1px solid #ffeee5;
 }
 
 @media screen and (min-width: 992px) and (max-width: 1199px) {
