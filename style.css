@@ -226,6 +226,11 @@ body {
         font-size: 4rem;
         padding-right: 1rem;
     }
+    .toggleBtn {
+    font-size: 1.5rem;
+    width: 80%;
+    margin-top: 3rem;
+    }
     #sendSection {
         margin-top: 8rem;
     }
