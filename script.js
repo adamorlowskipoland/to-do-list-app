@@ -305,6 +305,40 @@ var view = {
         var modal = document.getElementById('modal');
         modal.classList.remove('modal--active');
     },
+    putList: function () {
+        var listToSend = document.getElementById('listToSend');
+        
+        var lisToPut = document.querySelectorAll('#List > li');
+        lisToPut.forEach(function (li) {
+            listToSend.textContent += "- " + li.lastChild.textContent + "\n ";
+        })
+        
+        
+        
+//        var listToSend = document.getElementById('listToSend');
+//        
+//        var lisToPut = document.querySelectorAll('#List > li');
+////        var lisToSend = document.querySelectorAll('.ul > li');
+//        var liToPut = [];
+////        var liToSend = [];
+//        lisToPut.forEach(function (li) {
+//            liToPut.push(li.lastChild.textContent);
+//        })
+//        console.log(liToPut);
+//        liToPut.forEach(function (el) {
+//            var listToSendLi = document.createElement('li');
+//            listToSendLi.textContent = el;
+//            listToSend.appendChild(listToSendLi);
+//        })
+        
+        
+        
+//        lisToSend.forEach(function(li) {            
+//            var liToSend = li.lastChild.textContent;
+//            console.log(liToSend);
+//        })
+
+    },
     setUpEventListeners: function () {
         // toggleAll eventListener
         var btnToggleAll = document.getElementById("btnToggleAll");
@@ -328,7 +362,7 @@ var view = {
                 handlers.toggleCompleted(parseInt(clickedElementParent.parentNode.id));
             }
         }, false);
-    // eventListener for keydown
+    // eventListener for keydown enter
         var addInput = document.getElementById("addTodoTextInput");
         addInput.addEventListener('keydown', function (event) {
             if (event.keyCode === 13) {
@@ -337,6 +371,12 @@ var view = {
                 } else {
                     return;
                 }
+            }
+        }, false);
+    // eventListener for keydown esc
+        window.addEventListener('keydown', function (event) {
+            if (event.keyCode === 27) {
+                view.closeModal();
             }
         }, false);
         var showAll = document.getElementById('all');
@@ -359,6 +399,7 @@ var view = {
         var btnModalOpen = document.getElementById('sendBtn');
         btnModalOpen.addEventListener('click', function () {
             view.openModal();
+            view.putList();
         }, false);
 //        closing modal
         var btnModalClose = document.getElementById('btn__modal--close');
