@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>toDoList_app</title>
     <link rel="stylesheet" href="style.css" type="text/css">
-    
+<!--    <link rel="stylesheet" href="modal.css" type="text/css">-->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
 </head>
 <body>
@@ -47,19 +47,23 @@
             <div id="sendSection">
                 
             </div>
+            
         </div>
     </div>
 
 <!--    FUTURE: this needs to be reconfigurated    -->
 <!--    modal -->
-<!--
-    <button id="trigger" class="trigger-button" type="button">Launch Modal</button>
-
-    <div id="content">
-        <h1>Look at me!</h1>
-        <p>I'm a modal window.</p>
+    <div id="modal" class="modal modal--active">
+        <form action="emailto:" class="form">
+            <button type="button" id="btn__modal--close" class="btn__modal--close">X</button>
+            <input type="email" name="email" id="email" class="email" placeholder="... put an e-mail address" required autofocus>
+            <textarea name="list" id="listTosend" class="textarea"  disabled></textarea>
+            <textarea name="messenge" id="messenge" class="textarea"  placeholder="... add a short note"></textarea>
+            <input type="submit" value="SEND" id="btn__modal--send" class="btn__modal--send">
+            
+            
+        </form>
     </div>
--->
 <!--   end of modal -->
     
     <script src="script.js"></script>
