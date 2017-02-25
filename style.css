@@ -140,26 +140,10 @@ body {
     transition: all .3s ease;
 }
 
-
-#sendSection {
-    text-align: center;
-    margin-top: 5rem;
-    transition: all .2s ease;
-}
-
-.sendBtn {
-    display: inline;
-    font-size: 1.5rem;
-    text-transform: uppercase;
-    letter-spacing: .5rem;
-    padding: 1rem 0;
-    cursor: pointer;
-    border-bottom: 1px solid #6b351c;
-}
-
 .toggleBtns {
     display: none;
     text-align: center;
+    margin: 2rem auto;
 }
 
 .toggleBtn {
@@ -182,6 +166,23 @@ body {
 .active {
     border-bottom: 1px #6b351c solid;
     opacity: 1;
+}
+
+
+#sendSection {
+    text-align: center;
+    margin-top: 3rem;
+    transition: all .2s ease;
+}
+
+.sendBtn {
+    display: inline;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: .5rem;
+    padding: 1rem 0;
+    cursor: pointer;
+    border-bottom: 1px solid #6b351c;
 }
 
 
