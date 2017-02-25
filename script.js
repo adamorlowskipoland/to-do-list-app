@@ -109,12 +109,12 @@ var handlers = {
 // takes value from inputs in html
 var view = {
     displayTodos: function () {
-//        var allTogglebtn = document.getElementsByClassName('toggleBtn');
-//        allTogglebtn.forEach(function (p) {
-//            p.classList.remove('active');
-//        })
-//        var all = document.getElementById('all');
-//        all.classList.add('active');
+        var allDisplayBtns = document.querySelectorAll('.toggleBtn');
+        allDisplayBtns.forEach(function (p) {
+            p.classList.remove('active');
+        })
+        var all = document.getElementById('all');
+        all.classList.add('active');
         var btnToggleAll = document.getElementById('btnToggleAll');
         var toggleBtns = document.getElementById('toggleBtns');
         if (todoList.todos.length !== 0) {
@@ -165,12 +165,12 @@ var view = {
         }
     },
     displayDoneTodos: function () {
-//        var allTogglebtn = document.getElementsByClassName('toggleBtn');
-//        allTogglebtn.forEach(function (p) {
-//            p.classList.remove('active');
-//        })
-//        var completed = document.getElementById('completed');
-//        completed.classList.add('active');
+        var allDisplayBtns = document.querySelectorAll('.toggleBtn');
+        allDisplayBtns.forEach(function (p) {
+            p.classList.remove('active');
+        })
+        var completed = document.getElementById('completed');
+        completed.classList.add('active');
         var btnToggleAll = document.getElementById('btnToggleAll');
         var toggleBtns = document.getElementById('toggleBtns');
         if (todoList.todos.length !== 0) {
@@ -186,7 +186,7 @@ var view = {
         sendSection.innerHTML = "";
         
         todoList.todos.forEach(function (todo, position) {
-            var doneBtn;
+//            var doneBtn;
             var todoTextWithComplition = "";
             if (todo.completed === true) {
                 var todoP = document.createElement("p");
@@ -194,11 +194,11 @@ var view = {
                 todoTextWithComplition = todo.todoText;
                 todoP.style.textDecoration = "line-through";
                 todoLi.style.opacity = ".4";
-                doneBtn = this.createDoneBtnChecked();
+//                doneBtn = this.createDoneBtnChecked();
                 todoLi.id = position;      // gives created li id
                 todoP.textContent = todoTextWithComplition;
-                todoLi.appendChild(this.createDeleteBtn());     // creates new btn from CreateDeleteBtn method and append it to li
-                todoLi.appendChild(doneBtn);
+//                todoLi.appendChild(this.createDeleteBtn());     // creates new btn from CreateDeleteBtn method and append it to li
+//                todoLi.appendChild(doneBtn);
                 todoLi.appendChild(todoP);
                 todosUl.appendChild(todoLi);    // append li to ul
             } 
@@ -213,12 +213,12 @@ var view = {
         }
     },
     displayInProgressTodos: function () {
-//        var allTogglebtn = document.getElementsByClassName('toggleBtn');
-//        allTogglebtn.forEach(function (p) {
-//            p.classList.remove('active');
-//        })
-//        var inProgress = document.getElementById('inProgress');
-//        inProgress.classList.add('active');
+        var allDisplayBtns = document.querySelectorAll('.toggleBtn');
+        allDisplayBtns.forEach(function (p) {
+            p.classList.remove('active');
+        })
+        var inProgress = document.getElementById('inProgress');
+        inProgress.classList.add('active');
         var btnToggleAll = document.getElementById('btnToggleAll');
         var toggleBtns = document.getElementById('toggleBtns');
         if (todoList.todos.length !== 0) {
@@ -230,21 +230,22 @@ var view = {
         }
         var todosUl = document.querySelector("#List");
         var sendSection = document.querySelector("#sendSection");
+        
         todosUl.innerHTML = "";
         sendSection.innerHTML = "";
         
         todoList.todos.forEach(function (todo, position) {
-            var doneBtn;
+//            var doneBtn;
             var todoTextWithComplition = "";
             if (todo.completed !== true) {
                 var todoP = document.createElement("p");
                 var todoLi = document.createElement("li");
                 todoTextWithComplition = todo.todoText;
-                doneBtn = this.createDoneBtnCheck();
+//                doneBtn = this.createDoneBtnCheck();
                 todoLi.id = position;      // gives created li id
                 todoP.textContent = todoTextWithComplition;
-                todoLi.appendChild(this.createDeleteBtn());     // creates new btn from CreateDeleteBtn method and append it to li
-                todoLi.appendChild(doneBtn);
+//                todoLi.appendChild(this.createDeleteBtn());     // creates new btn from CreateDeleteBtn method and append it to li
+//                todoLi.appendChild(doneBtn);
                 todoLi.appendChild(todoP);
                 todosUl.appendChild(todoLi);    // append li to ul
             }
