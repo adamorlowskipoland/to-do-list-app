@@ -377,6 +377,12 @@ body {
         font-size: 2rem;
         width: 90%;
         min-height: 15rem;
+    }
+    .btn__modal--send {
+        color: #6b351c;
+        background: #ffd3be;
+        font-size: 3rem;
+    }
 }
 
 @media screen and (max-width: 767px) {
