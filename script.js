@@ -111,10 +111,20 @@ var handlers = {
         this.displayTodos();
     },
     sendSubmit: function () {
+//        evt.preventDefault();
+//        
+//        var emailAddress = document.getElementById('email').value;
+//        var listToSend = document.getElementById('listToSend').value;
+//        var emailMessage = document.getElementById('message').value;
+//        var emailContent = emailMessage + "\n" + listToSend;
+//        
+//        window.location.href = "mailto:" + emailAddress + encodeURIComponent(emailContent); 
+        
         var sendList = document.getElementById('sendList');
         var email = document.getElementById('email').value;
         var address = "mailto:" + email;
         sendList.setAttribute("action", address);
+        view.closeModal();
     }
 };
 
@@ -300,9 +310,16 @@ var view = {
     openModal: function () {
         var modal = document.getElementById('modal');
         modal.classList.add('modal--active');
+        document.getElementById('email').focus();
     },
     closeModal: function () {
         var modal = document.getElementById('modal');
+        var email = document.getElementById('email');
+        var listToSend = document.getElementById('listToSend');
+        var message = document.getElementById('message');
+        email.textContent = "";
+        listToSend.textContent = "";
+        message.textContent = "";
         modal.classList.remove('modal--active');
     },
     putList: function () {
@@ -406,11 +423,10 @@ var view = {
         btnModalClose.addEventListener('click', function () {
             view.closeModal();
         }, false);
-//        set mailto attribiute to form
-        var btnSubmit = document.getElementById('btn__modal--send');
-        btnSubmit.addEventListener('click', function () {
+        var submit = document.getElementById('sendList');
+        submit.addEventListener('submit', function () {
             handlers.sendSubmit();
-        })
+        }, false);
     }
 };
 (function IIWC() {
